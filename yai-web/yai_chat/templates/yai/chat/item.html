@@ -1,0 +1,5 @@
+{% for question, answer in history %}
+<p class="fw-light"><h5>🌐 {{ question }}</h5></p>
+<p class="fw-normal">{{ answer|safe }}</p>
+<br />
+{% endfor %}

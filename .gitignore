@@ -1,0 +1,5 @@
+.cache
+build
+*.json
+__pycache__
+db.sqlite3
