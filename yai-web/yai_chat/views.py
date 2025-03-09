@@ -15,7 +15,6 @@ from django.http import (
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.views.generic import TemplateView, View
-from htmlmin import minify
 from markdown import markdown
 
 

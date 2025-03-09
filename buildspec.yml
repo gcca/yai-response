@@ -1,0 +1,30 @@
+version: 0.2
+
+env:
+  variables:
+    PYTHONPATH: "/home/build/cpp/build"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+      gcc: 11
+    commands:
+      - yum install -y cmake ninja-build
+      - pip install --upgrade pip
+      - pip install -r yai-web/requirements.txt
+  build:
+    commands:
+      - cmake -S . -B build -DCMAKE_CXX_STANDARD=20 -G Ninja
+      - cmake --build build
+      - cd yai-web
+      - python manage.py collectstatic --noinput
+  post_build:
+    commands:
+      - echo "Build completed successfully"
+      - echo "PYTHONPATH set to $PYTHONPATH"
+
+artifacts:
+  files:
+    - yai-web/**/*
+  discard-paths: no
